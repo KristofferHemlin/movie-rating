@@ -45,7 +45,7 @@ class AllReviews extends React.Component {
                             <p>Rating från IMDB: {imdbRating}</p>
                             <p>Tid:{time}</p>
                             {image &&
-                            <img src={image} />
+                            <img src={image} alt="movieImage" />
                             }
                         </div>
                     );

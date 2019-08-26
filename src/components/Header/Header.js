@@ -8,14 +8,8 @@ class Header extends React.Component {
         return (
             <div className="background">
                 <h3 className="title">Movie Rating</h3>
-                <ul className="list">
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
+                        <Link to="/">Home</Link><br/>
                         <Link to="/AddReview">Add Review</Link>
-                    </li>
-                </ul>
             </div>
         )
     }
