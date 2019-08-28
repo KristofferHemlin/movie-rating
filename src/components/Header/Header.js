@@ -1,14 +1,18 @@
-
 import React from 'react';
-// import Claremont from './img/claremont.svg'
-import './Header.css';
+import css from './Header.module.css';
+import {Link} from 'react-router-dom';
 
-function Header() {
-  return (
-    <div className="background">
-      <h3>Hallå där</h3>
-    </div>
-  );
+class Header extends React.Component {
+
+    render() {
+        return (
+            <div className={css.background}>
+                <h3 className={css.title}>Movie Rating</h3>
+                        <Link to="/">Home</Link><br/>
+                        <Link to="/AddReview">Add Review</Link>
+            </div>
+        )
+    }
 }
 
 export default Header;
