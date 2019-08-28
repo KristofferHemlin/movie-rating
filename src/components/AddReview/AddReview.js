@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Header from '../Header/Header';
+import css from './AddReview.module.css';
 
 class AddReview extends React.Component {
     constructor(props) {
@@ -130,9 +131,7 @@ class AddReview extends React.Component {
                 <input type="file" name="img" id="img" onChange={this._handleUpdateImage}/>
                 </label><br/>   
                 <input type="submit" value="Submit"/>
-                </form>
-                
-                
+                </form>                
             </div>
         )
     }
