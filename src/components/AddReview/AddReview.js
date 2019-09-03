@@ -14,6 +14,7 @@ class AddReview extends React.Component {
             title: '',
             genre: '',
             imageId: '',
+            genres: [],
         }
         this._handleUpdateImdb = this._handleUpdateImdb.bind(this);
         this._handleUpdateYour = this._handleUpdateYour.bind(this);
@@ -21,6 +22,14 @@ class AddReview extends React.Component {
         this._handleUpdateTitle = this._handleUpdateTitle.bind(this);
         this._handleUpdateGenre = this._handleUpdateGenre.bind(this);
     }
+
+     componentDidMount() {
+    axios.get(`https://localhost:44375/api/genre`)
+      .then(res => {
+        const genres = res.data;
+        this.setState({ genres });
+      })
+  }
 
     _handleUpdateYour(e) {
         if(e.target.validity.valid) {
@@ -67,12 +76,6 @@ class AddReview extends React.Component {
                 }})
             .then(res => {
                 console.log(this.state.genre);
-                // console.log(res.data.imageId)
-                // alert(res.data.imageId);
-                // this.setState({
-                //     imageId: res.data.imageId
-                // })
-
                 return axios({
                     method: 'POST',
                     url:'https://localhost:44375/api/movies',
@@ -93,6 +96,9 @@ class AddReview extends React.Component {
             })
             .then(res => {
                 console.log(res.data);
+                this.props.history.push({
+                    pathname: '/',
+                });
             })
             .catch(error => {
                 console.log(error)
@@ -106,13 +112,18 @@ class AddReview extends React.Component {
         return (
             <div>     
                 <Header/> 
+               
                 <form onSubmit={(e) => this.handleFileSelect(e)}>
                 <label>
                     <input type="text" name="title" value={this.state.title} onChange={this._handleUpdateTitle}/>
                     Titel
                 </label><br/>
                 <label>
-                    <input type="text" name="genre" value={this.state.genre} onChange={this._handleUpdateGenre}/>
+                    {/* <input type="text" name="genre" value={this.state.genre} onChange={this._handleUpdateGenre}/>
+                    Genre */}
+                     <select name="genre" className={css.test}>
+                        { this.state.genres.map(genre => <option value={genre.name}>{genre.name}</option>)}
+                    </select>
                     Genre
                 </label><br/>
                 <label>
